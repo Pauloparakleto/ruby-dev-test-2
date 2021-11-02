@@ -12,7 +12,7 @@ RSpec.describe Player, type: :model do
     end
 
     it 'has invalid nil name' do
-      player = described_class.create(name: nil)
+      player = described_class.new(name: nil)
 
       expect(player.valid?).to be_falsey
     end
