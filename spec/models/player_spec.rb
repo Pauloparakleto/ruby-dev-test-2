@@ -34,4 +34,15 @@ RSpec.describe Player, type: :model do
       expect(player.valid?).to be_falsey
     end
   end
+
+  context 'with many albums' do
+    it 'counts three albums' do
+      albums = []
+      3.times { albums << FactoryBot.attributes_for(:album) }
+
+      player.albums.create(albums)
+
+      expect(player.reload.albums.count).to eq(3)
+    end
+  end
 end
